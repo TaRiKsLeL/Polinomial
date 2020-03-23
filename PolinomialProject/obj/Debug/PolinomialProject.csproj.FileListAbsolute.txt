@@ -1,0 +1,6 @@
+C:\Users\user\source\repos\Illiash_ASD_3course_Labs\PolinomialProject\PolinomialProject\bin\Debug\PolinomialProject.exe.config
+C:\Users\user\source\repos\Illiash_ASD_3course_Labs\PolinomialProject\PolinomialProject\bin\Debug\PolinomialProject.exe
+C:\Users\user\source\repos\Illiash_ASD_3course_Labs\PolinomialProject\PolinomialProject\bin\Debug\PolinomialProject.pdb
+C:\Users\user\source\repos\Illiash_ASD_3course_Labs\PolinomialProject\PolinomialProject\obj\Debug\PolinomialProject.csprojAssemblyReference.cache
+C:\Users\user\source\repos\Illiash_ASD_3course_Labs\PolinomialProject\PolinomialProject\obj\Debug\PolinomialProject.exe
+C:\Users\user\source\repos\Illiash_ASD_3course_Labs\PolinomialProject\PolinomialProject\obj\Debug\PolinomialProject.pdb
