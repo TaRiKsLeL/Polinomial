@@ -11,82 +11,77 @@ namespace PolinomialProject
     {
         static void Main(string[] args)
         {
-            double time;
-
-            IO io = new IO();
-            int firstMaxExp = io.InputExponent();
-            int secondMaxExp = io.InputExponent();
+            InputOutput io = new InputOutput();
+            int firstMaxExp = io.GetExp();
+            int secondMaxExp = io.GetExp();
 
             //використовую аналог vector
 
             List<Member> membersLst = new List<Member>();
-            Handler polinominalControllerLst = new Handler(membersLst);
-            polinominalControllerLst.GenerateWithExp(firstMaxExp);
-            io.ShowPolinominal(membersLst);
+            Handler handlerLst = new Handler(membersLst);
+            handlerLst.GenerateWithExp(firstMaxExp);
+            io.PrintPolinom(membersLst);
 
             List<Member> membersLst2 = new List<Member>();
-            Handler polinominalControllerLst2 = new Handler(membersLst2);
-            polinominalControllerLst2.GenerateWithExp(secondMaxExp);
-            io.ShowPolinominal(membersLst2);
+            Handler handlerLst2 = new Handler(membersLst2);
+            handlerLst2.GenerateWithExp(secondMaxExp);
+            io.PrintPolinom(membersLst2);
 
 
-            Console.WriteLine("result List");
+            Console.WriteLine("Вектор: ");
 
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-            List<Member> result = polinominalControllerLst.Multiply(polinominalControllerLst2);
+            List<Member> result = handlerLst.Multiply(handlerLst2);
             stopwatch.Stop();
-            time = (stopwatch.Elapsed.TotalMilliseconds);
 
-            io.ShowPolinominal(result);
-            Console.WriteLine("spended time: " + time);
+            io.PrintPolinom(result);
+            Console.WriteLine("Потрачений час: " + stopwatch.Elapsed.TotalMilliseconds);
 
             //===========================================================================================================
 
             // виконую аналогічні дії з двосв'язним списком
 
             LinkedList<Member> membersLstLinked = new LinkedList<Member>();
-            Handler polinominalControllerLstLinked = new Handler(membersLstLinked);
-            polinominalControllerLstLinked.GenerateWithExp(firstMaxExp);
-            io.ShowPolinominal(membersLstLinked);
+            Handler handlerLstLinked = new Handler(membersLstLinked);
+            handlerLstLinked.GenerateWithExp(firstMaxExp);
+            io.PrintPolinom(membersLstLinked);
 
             LinkedList<Member> membersLst2Linked = new LinkedList<Member>();
-            Handler polinominalControllerLst2Linked = new Handler(membersLst2Linked);
-            polinominalControllerLst2Linked.GenerateWithExp(secondMaxExp);
-            io.ShowPolinominal(membersLst2Linked);
+            Handler handlerLst2Linked = new Handler(membersLst2Linked);
+            handlerLst2Linked.GenerateWithExp(secondMaxExp);
+            io.PrintPolinom(membersLst2Linked);
 
 
-            Console.WriteLine("result LinkedList");
+            Console.WriteLine("Зв'язний список:");
 
             stopwatch.Start();
-            List<Member> resultLinked = polinominalControllerLst.Multiply(polinominalControllerLst2);
+            List<Member> resultLinked = handlerLst.Multiply(handlerLst2);
             stopwatch.Stop();
-            time = (stopwatch.Elapsed.TotalMilliseconds);
 
-            io.ShowPolinominal(resultLinked);
-            Console.WriteLine("spended time: " + time);
+            io.PrintPolinom(resultLinked);
+            Console.WriteLine("Потрачений час: " + stopwatch.Elapsed.TotalMilliseconds);
 
 
         }
     }
 
-    class IO
+    class InputOutput
     {
-        const string EXPONENT = "enter polinominal exponent:";
-        public int InputExponent()
+        public int GetExp()
         {
-            Console.WriteLine(EXPONENT);
+            Console.WriteLine("Введiть експонент:");
             return Int32.Parse(Console.ReadLine());
         }
 
-        public void ShowPolinominal(ICollection<Member> members)
+        public void PrintPolinom(ICollection<Member> members)
         {
-            foreach (Member member in members)
+            foreach (Member member in members.Reverse())
             {
-                Console.WriteLine(member.Coeff + "x^" + member.Expo);
+                Console.Write(member.Coeff + "x^" + member.Expo+"+");
             }
 
-            Console.WriteLine("==============================");
+            Console.WriteLine("\n-----------------------------");
         }
     }
 
@@ -104,7 +99,7 @@ namespace PolinomialProject
             Random rndGenerator = new Random();
             for (int i = 0; i <= maxExp; i++)
             {
-                members.Add(new Member(rndGenerator.Next(1, 100), i));
+                members.Add(new Member(rndGenerator.Next(1, 10), i));
             }
         }
 
